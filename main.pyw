@@ -13,6 +13,9 @@ import editor
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
+    trans = QtCore.QTranslator()
+    trans.load('zh_CN')
+    app.installTranslator(trans)
 
     mainWindows = []
     for fn in sys.argv[1:] or [None]:
