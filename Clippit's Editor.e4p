@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project Clippit's Editor -->
-<!-- Saved: 2011-06-28, 02:38:34 -->
+<!-- Saved: 2011-07-03, 20:10:55 -->
 <!-- Copyright (C) 2011 Clippit, zlthooray@gmail.com -->
 <Project version="4.6">
   <Language>en</Language>
@@ -13,6 +13,8 @@
   <Email>zlthooray@gmail.com</Email>
   <Sources>
     <Source>__init__.py</Source>
+    <Source>editor.py</Source>
+    <Source>main.pyw</Source>
   </Sources>
   <Forms>
     <Form>main.ui</Form>
@@ -20,6 +22,7 @@
   <Translations>
   </Translations>
   <Resources>
+    <Resource>textedit.qrc</Resource>
   </Resources>
   <Interfaces>
   </Interfaces>
