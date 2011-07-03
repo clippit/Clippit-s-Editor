@@ -263,7 +263,7 @@ class Editor(QtGui.QMainWindow):
         tb = QtGui.QToolBar(self)
         tb.setAllowedAreas(
                 QtCore.Qt.TopToolBarArea | QtCore.Qt.BottomToolBarArea)
-        tb.setWindowTitle(self.tr("Format Actions"))
+        tb.setWindowTitle(self.tr("Font & Paragraph Actions"))
         self.addToolBarBreak(QtCore.Qt.TopToolBarArea)
         self.addToolBar(tb)
 
