@@ -46,12 +46,12 @@ Do you want to save your changes?</source>
         <translation>PDF 文件 (*.pdf);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="actions.py" line="253"/>
+        <location filename="actions.py" line="275"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="actions.py" line="253"/>
+        <location filename="actions.py" line="275"/>
         <source>This is a student project of Software Construction course.
 
 2011 Software Institution, Nanjing University</source>
@@ -60,14 +60,24 @@ Do you want to save your changes?</source>
 2011 南京大学软件学院</translation>
     </message>
     <message>
-        <location filename="actions.py" line="294"/>
+        <location filename="actions.py" line="316"/>
         <source>Language Changed</source>
         <translation>语言变更</translation>
     </message>
     <message>
-        <location filename="actions.py" line="294"/>
+        <location filename="actions.py" line="316"/>
         <source>Your language will be changed when you run the application next time.</source>
         <translation>你的语言将会在下次运行程序时改变。</translation>
+    </message>
+    <message>
+        <location filename="actions.py" line="159"/>
+        <source>Insert An Image</source>
+        <translation>插入一个图像</translation>
+    </message>
+    <message>
+        <location filename="actions.py" line="159"/>
+        <source>Images (*.jpg *.png);;All Files (*)</source>
+        <translation>图像文件 (*.jpg *.png);;所有文件 (*)</translation>
     </message>
 </context>
 <context>
@@ -148,67 +158,67 @@ Do you want to save your changes?</source>
         <translation>粘贴(&amp;P)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="165"/>
+        <location filename="editor.py" line="176"/>
         <source>Format Actions</source>
         <translation>格式</translation>
     </message>
     <message>
-        <location filename="editor.py" line="170"/>
+        <location filename="editor.py" line="181"/>
         <source>F&amp;ormat</source>
         <translation>格式(&amp;O)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="173"/>
+        <location filename="editor.py" line="184"/>
         <source>&amp;Bold</source>
         <translation>粗体(&amp;B)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="185"/>
+        <location filename="editor.py" line="196"/>
         <source>&amp;Italic</source>
         <translation>斜体(&amp;I)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="197"/>
+        <location filename="editor.py" line="208"/>
         <source>&amp;Underline</source>
         <translation>下划线(&amp;U)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="214"/>
+        <location filename="editor.py" line="225"/>
         <source>&amp;Left</source>
         <translation>左对齐(&amp;L)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="218"/>
+        <location filename="editor.py" line="229"/>
         <source>C&amp;enter</source>
         <translation>居中对齐(&amp;E)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="222"/>
+        <location filename="editor.py" line="233"/>
         <source>&amp;Right</source>
         <translation>右对齐(&amp;R)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="226"/>
+        <location filename="editor.py" line="237"/>
         <source>&amp;Justify</source>
         <translation>两端对齐(&amp;J)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="254"/>
+        <location filename="editor.py" line="265"/>
         <source>&amp;Color...</source>
         <translation>颜色(&amp;C)...</translation>
     </message>
     <message>
-        <location filename="editor.py" line="298"/>
+        <location filename="editor.py" line="304"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="editor.py" line="300"/>
+        <location filename="editor.py" line="306"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="editor.py" line="301"/>
+        <location filename="editor.py" line="307"/>
         <source>About &amp;Qt</source>
         <translation>关于&amp;QT</translation>
     </message>
@@ -255,7 +265,7 @@ Do you want to save your changes?</source>
         <translation type="obsolete">PDF 文件 (*.pdf);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="262"/>
+        <location filename="editor.py" line="273"/>
         <source>Font &amp; Paragraph Actions</source>
         <translation>字体和段落</translation>
     </message>
@@ -265,17 +275,17 @@ Do you want to save your changes?</source>
         <translation type="obsolete">语言</translation>
     </message>
     <message>
-        <location filename="editor.py" line="305"/>
+        <location filename="editor.py" line="311"/>
         <source>&amp;Language</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="310"/>
+        <location filename="editor.py" line="316"/>
         <source>&amp;English</source>
         <translation>英语(&amp;E)</translation>
     </message>
     <message>
-        <location filename="editor.py" line="314"/>
+        <location filename="editor.py" line="320"/>
         <source>&amp;Chinese</source>
         <translation>简体中文(&amp;C)</translation>
     </message>
@@ -299,9 +309,34 @@ Do you want to save your changes?</source>
         <translation type="obsolete">你的语言将会在下次运行程序时改变。</translation>
     </message>
     <message>
-        <location filename="editor.py" line="326"/>
+        <location filename="editor.py" line="332"/>
         <source>Navigation</source>
         <translation>页面导航</translation>
+    </message>
+    <message>
+        <location filename="editor.py" line="165"/>
+        <source>&amp;Insert Image</source>
+        <translation>插入图像(&amp;I)</translation>
+    </message>
+    <message>
+        <location filename="editor.py" line="279"/>
+        <source>Normal Text</source>
+        <translation>普通文本</translation>
+    </message>
+    <message>
+        <location filename="editor.py" line="280"/>
+        <source>Title 1</source>
+        <translation>标题一</translation>
+    </message>
+    <message>
+        <location filename="editor.py" line="281"/>
+        <source>Title 2</source>
+        <translation>标题二</translation>
+    </message>
+    <message>
+        <location filename="editor.py" line="282"/>
+        <source>Title 3</source>
+        <translation>标题三</translation>
     </message>
 </context>
 </TS>
