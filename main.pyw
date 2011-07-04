@@ -12,16 +12,25 @@ from PyQt4 import QtCore, QtGui
 import editor
 
 if __name__ == '__main__':
+    QtCore.QTextCodec.setCodecForTr(QtCore.QTextCodec.codecForName("utf8"))
     app = QtGui.QApplication(sys.argv)
-    trans = QtCore.QTranslator()
-    trans.load('zh_CN')
-    app.installTranslator(trans)
+    app.setOrganizationName("Clippit")
+    app.setApplicationName("Clippit's Editor")
+    
+    i18n = QtCore.QSettings()
+    if i18n.value("lang").toString() == "zh_CN":
+        appTrans = QtCore.QTranslator()
+        appTrans.load('zh_CN')
+        sysTrans = QtCore.QTranslator()
+        sysTrans.load('qt_zh_CN')
+        app.installTranslator(appTrans)
+        app.installTranslator(sysTrans)
 
     mainWindows = []
     for fn in sys.argv[1:] or [None]:
-        textEdit = editor.Editor(fn)
-        textEdit.resize(800, 600)
-        textEdit.show()
-        mainWindows.append(textEdit)
+        editor = editor.Editor(fn)
+        editor.resize(800, 600)
+        editor.show()
+        mainWindows.append(editor)
 
     sys.exit(app.exec_())

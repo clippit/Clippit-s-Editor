@@ -18,6 +18,7 @@ class Editor(QMainWindow):
         self.setupFileActions()
         self.setupEditActions()
         self.setupFormatActions()
+        self.setupI18nActions()
         self.setupHelpActions()
  
         self.textEdit = QTextEdit(self)
@@ -53,6 +54,13 @@ class Editor(QMainWindow):
         self.textEdit.copyAvailable.connect(self.actionCopy.setEnabled)
         QApplication.clipboard().dataChanged.connect(
                 self.clipboardDataChanged)
+        
+        i18n = QSettings()
+        if i18n.value("lang").toString() == "zh_CN":
+            self.actionChinese.setChecked(True)
+        else:
+            self.actionEnglish.setChecked(True)
+
 
         if fileName is None:
             fileName = ':/example.html'
@@ -172,6 +180,7 @@ class Editor(QMainWindow):
     def setupFormatActions(self):
         tb = QToolBar(self)
         tb.setWindowTitle(self.tr("Format Actions"))
+        self.addToolBarBreak(Qt.TopToolBarArea)
         self.addToolBar(tb)
 
         menu = QMenu(self.tr("F&ormat"), self)
@@ -265,7 +274,6 @@ class Editor(QMainWindow):
         tb.setAllowedAreas(
                 Qt.TopToolBarArea | Qt.BottomToolBarArea)
         tb.setWindowTitle(self.tr("Font & Paragraph Actions"))
-        self.addToolBarBreak(Qt.TopToolBarArea)
         self.addToolBar(tb)
 
         comboStyle = QComboBox(tb)
@@ -304,8 +312,34 @@ class Editor(QMainWindow):
         self.menuBar().addMenu(helpMenu)
         helpMenu.addAction(self.tr("About"), self.about)
         helpMenu.addAction(self.tr("About &Qt"), qApp.aboutQt)
-
-
+    
+    def setupI18nActions(self):
+        tb = QToolBar(self)
+        tb.setWindowTitle(self.tr("Language Actions"))
+        self.addToolBar(tb)
+        
+        menu = QMenu(self.tr("&Language"), self)
+        self.menuBar().addMenu(menu)
+        
+        grp = QActionGroup(self, triggered=self.language)
+        
+        self.actionEnglish = QAction(
+                QIcon.fromTheme('flag-us',
+                        QIcon(':/images/textleft.png')),
+                self.tr("&English"), grp)
+        self.actionChinese = QAction(
+                QIcon.fromTheme('flag-cn',
+                        QIcon(':/images/textcenter.png')),
+                self.tr("&Chinese"), grp)
+        self.actionEnglish.setCheckable(True)
+        self.actionEnglish.setPriority(QAction.LowPriority)
+        self.actionChinese.setCheckable(True)
+        self.actionChinese.setPriority(QAction.LowPriority)
+        
+        tb.addActions(grp.actions())
+        menu.addActions(grp.actions())
+        
+    
     def load(self, f):
         '''Load File'''
         
@@ -519,7 +553,7 @@ class Editor(QMainWindow):
 
     def about(self):
         QMessageBox.about(self, self.tr("About"), 
-                "This is a student project of Software Construction course.\n\n2011 Software Institution, Nanjing University")
+                self.tr("This is a student project of Software Construction course.\n\n2011 Software Institution, Nanjing University"))
 
     def mergeFormatOnWordOrSelection(self, format):
         cursor = self.textEdit.textCursor()
@@ -552,3 +586,13 @@ class Editor(QMainWindow):
             self.actionAlignRight.setChecked(True)
         elif alignment & Qt.AlignJustify:
             self.actionAlignJustify.setChecked(True)
+
+    def language(self, action):
+        i18n = QSettings()
+        if action == self.actionEnglish:
+            i18n.setValue("lang", "en_US")
+        elif action == self.actionChinese:
+            i18n.setValue("lang", "zh_CN")
+        QMessageBox.information(self, self.tr("Language Changed"), 
+                                self.tr("Your language will be changed when you run the application next time."))
+                
