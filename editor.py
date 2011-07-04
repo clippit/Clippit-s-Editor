@@ -5,7 +5,7 @@ import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-import textedit_rc
+import editor_rc
 
 class Editor(QMainWindow):
     def __init__(self, fileName=None, parent=None):
