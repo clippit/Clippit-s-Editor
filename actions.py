@@ -69,7 +69,7 @@ class Actions(QObject):
         if self.fileName.startswith(':/'):
             return True
 
-        ret = QMessageBox.warning(self, self.tr("Clippit's Editor"),
+        ret = QMessageBox.warning(self.main, self.tr("Clippit's Editor"),
                 self.tr("The document has been modified.\nDo you want to save your changes?"),
                 QMessageBox.Save | QMessageBox.Discard |
                         QMessageBox.Cancel)
@@ -166,7 +166,7 @@ class Actions(QObject):
 
     def textBold(self):
         fmt = QTextCharFormat()
-        fmt.setFontWeight(self.main.actionTextBold.isChecked() and QFont.Bold or QFont.Normal)
+        fmt.setFontWeight(QFont.Bold if self.main.actionTextBold.isChecked() else QFont.Normal)
         self.mergeFormatOnWordOrSelection(fmt)
 
     def textUnderline(self):
@@ -191,39 +191,52 @@ class Actions(QObject):
             fmt.setFontPointSize(pointSize)
             self.mergeFormatOnWordOrSelection(fmt)
 
+    def normalText(self):
+        fmt = QTextCharFormat()
+        fmt.setFontWeight(QFont.Normal)
+        fmt.setFontUnderline(False)
+        fmt.setFontItalic(False)
+        fmt.setFontPointSize(float(11))
+        fmt.setForeground(Qt.black)
+        self.mergeFormatOnWordOrSelection(fmt)
+        self.colorChanged(Qt.black)
+        self.textEdit.setAlignment(Qt.AlignJustify)
+    
+    def title1(self):
+        fmt = QTextCharFormat()
+        fmt.setFontWeight(QFont.Bold)
+        fmt.setFontUnderline(False)
+        fmt.setFontItalic(False)
+        fmt.setFontPointSize(float(26))
+        self.mergeFormatOnWordOrSelection(fmt)
+        self.textEdit.setAlignment(Qt.AlignHCenter)
+        
+    def title2(self):
+        fmt = QTextCharFormat()
+        fmt.setFontWeight(QFont.Bold)
+        fmt.setFontUnderline(False)
+        fmt.setFontItalic(False)
+        fmt.setFontPointSize(float(18))
+        self.mergeFormatOnWordOrSelection(fmt)
+    
+    def title3(self):
+        fmt = QTextCharFormat()
+        fmt.setFontWeight(QFont.Bold)
+        fmt.setFontUnderline(False)
+        fmt.setFontItalic(True)
+        fmt.setFontPointSize(float(14))
+        self.mergeFormatOnWordOrSelection(fmt)
+        
     def textStyle(self, styleIndex):
-        cursor = self.textEdit.textCursor()
-        if styleIndex:
-            styleDict = {
-                1: QTextListFormat.ListDisc,
-                2: QTextListFormat.ListCircle,
-                3: QTextListFormat.ListSquare,
-                4: QTextListFormat.ListDecimal,
-                5: QTextListFormat.ListLowerAlpha,
-                6: QTextListFormat.ListUpperAlpha,
-                7: QTextListFormat.ListLowerRoman,
-                8: QTextListFormat.ListUpperRoman,
-            }
+        # Table Driven
+        styleDict = {
+            0: self.normalText, 
+            1: self.title1,
+            2: self.title2,
+            3: self.title3,
+        }
 
-            style = styleDict.get(styleIndex, QTextListFormat.ListDisc)
-            cursor.beginEditBlock()
-            blockFmt = cursor.blockFormat()
-            listFmt = QTextListFormat()
-
-            if cursor.currentList():
-                listFmt = cursor.currentList().format()
-            else:
-                listFmt.setIndent(blockFmt.indent() + 1)
-                blockFmt.setIndent(0)
-                cursor.setBlockFormat(blockFmt)
-
-            listFmt.setStyle(style)
-            cursor.createList(listFmt)
-            cursor.endEditBlock()
-        else:
-            bfmt = QTextBlockFormat()
-            bfmt.setObjectIndex(-1)
-            cursor.mergeBlockFormat(bfmt)
+        styleDict.get(styleIndex, self.normalText)()
 
     def textColor(self):
         col = QColorDialog.getColor(self.textEdit.textColor(), self)
