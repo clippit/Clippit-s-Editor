@@ -250,7 +250,7 @@ class Actions(QObject):
                 len(QApplication.clipboard().text()) != 0)
 
     def about(self):
-        QMessageBox.about(self, self.tr("About"), 
+        QMessageBox.about(self.main, self.tr("About"), 
                 self.tr("This is a student project of Software Construction course.\n\n2011 Software Institution, Nanjing University"))
 
     def mergeFormatOnWordOrSelection(self, format):
@@ -291,7 +291,7 @@ class Actions(QObject):
             i18n.setValue("lang", "en_US")
         elif action == self.main.actionChinese:
             i18n.setValue("lang", "zh_CN")
-        QMessageBox.information(self, self.tr("Language Changed"), 
+        QMessageBox.information(self.main, self.tr("Language Changed"), 
                                 self.tr("Your language will be changed when you run the application next time."))
     
     def printPreview(self, printer):
