@@ -1,26 +1,26 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
   <file>images/logo.png</file>
-  <file>images/logo32.png</file>
-  <file>images/editcopy.png</file>
-  <file>images/editcut.png</file>
-  <file>images/editpaste.png</file>
-  <file>images/editredo.png</file>
-  <file>images/editundo.png</file>
-  <file>images/exportpdf.png</file>
-  <file>images/filenew.png</file>
-  <file>images/fileopen.png</file>
-  <file>images/fileprint.png</file>
-  <file>images/filesave.png</file>
-  <file>images/textbold.png</file>
-  <file>images/textcenter.png</file>
-  <file>images/textitalic.png</file>
-  <file>images/textjustify.png</file>
-  <file>images/textleft.png</file>
-  <file>images/textright.png</file>
-  <file>images/textunder.png</file>
-  <file>images/zoomin.png</file>
-  <file>images/zoomout.png</file>
+  <file>images/example.png</file>
+  <file>images/document-new.png</file>
+  <file>images/document-open.png</file>
+  <file>images/document-save-as.png</file>
+  <file>images/document-save.png</file>
+  <file>images/edit-copy.png</file>
+  <file>images/edit-cut.png</file>
+  <file>images/edit-paste.png</file>
+  <file>images/edit-redo.png</file>
+  <file>images/edit-undo.png</file>
+  <file>images/flag-cn.png</file>
+  <file>images/flag-us.png</file>
+  <file>images/format-justify-center.png</file>
+  <file>images/format-justify-fill.png</file>
+  <file>images/format-justify-left.png</file>
+  <file>images/format-justify-right.png</file>
+  <file>images/format-text-bold.png</file>
+  <file>images/format-text-italic.png</file>
+  <file>images/format-text-underline.png</file>
+  <file>images/gnome-mime-application-pdf.png</file>
   <file>example.html</file>
 </qresource>
 </RCC>

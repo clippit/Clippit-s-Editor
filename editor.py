@@ -78,13 +78,14 @@ class Editor(QMainWindow):
         tb = QToolBar(self)
         tb.setWindowTitle(self.tr("File Actions"))
         self.addToolBar(tb)
+        tb.setIconSize(QSize(48, 48))
 
         menu = QMenu(self.tr("&File"), self)
         self.menuBar().addMenu(menu)
 
         self.actionNew = QAction(
                 QIcon.fromTheme('document-new',
-                        QIcon(':/images/filenew.png')),
+                        QIcon(':/images/document-new.png')),
                 self.tr("&New"), self, priority=QAction.LowPriority,
                 shortcut=QKeySequence.New, triggered=self.fileNew)
         tb.addAction(self.actionNew)
@@ -92,7 +93,7 @@ class Editor(QMainWindow):
 
         self.actionOpen = QAction(
                 QIcon.fromTheme('document-open',
-                        QIcon(':/images/fileopen.png')),
+                        QIcon(':/images/document-open.png')),
                 self.tr("&Open..."), self, shortcut=QKeySequence.Open,
                 triggered=self.fileOpen)
         tb.addAction(self.actionOpen)
@@ -101,22 +102,25 @@ class Editor(QMainWindow):
 
         self.actionSave = QAction(
                 QIcon.fromTheme('document-save',
-                        QIcon(':/images/filesave.png')),
+                        QIcon(':/images/document-save.png')),
                 self.tr("&Save"), self, shortcut=QKeySequence.Save,
                 triggered=self.fileSave, enabled=False)
         tb.addAction(self.actionSave)
         menu.addAction(self.actionSave)
 
-        self.actionSaveAs = QAction(self.tr("Save &As..."), self,
+        self.actionSaveAs = QAction(
+                QIcon.fromTheme('document-save-as',
+                        QIcon(':/images/document-save-as.png')),
+                self.tr("Save &As..."), self,
                 priority=QAction.LowPriority,
                 shortcut=Qt.CTRL + Qt.SHIFT + Qt.Key_S,
                 triggered=self.fileSaveAs)
+        tb.addAction(self.actionSaveAs)
         menu.addAction(self.actionSaveAs)
         menu.addSeparator()
  
         self.actionPrintPdf = QAction(
-                QIcon.fromTheme('exportpdf',
-                        QIcon(':/images/exportpdf.png')),
+                QIcon(':/images/gnome-mime-application-pdf.png'),
                 self.tr("&Export PDF..."), self, priority=QAction.LowPriority,
                 shortcut=Qt.CTRL + Qt.Key_D,
                 triggered=self.filePrintPdf)
@@ -132,29 +136,31 @@ class Editor(QMainWindow):
         tb = QToolBar(self)
         tb.setWindowTitle(self.tr("Edit Actions"))
         self.addToolBar(tb)
+        tb.setIconSize(QSize(48, 48))
 
         menu = QMenu(self.tr("&Edit"), self)
         self.menuBar().addMenu(menu)
 
         self.actionUndo = QAction(
                 QIcon.fromTheme('edit-undo',
-                        QIcon(':/images/editundo.png')),
+                        QIcon(':/images/edit-undo.png')),
                 self.tr("&Undo"), self, shortcut=QKeySequence.Undo)
         tb.addAction(self.actionUndo)
         menu.addAction(self.actionUndo)
 
         self.actionRedo = QAction(
                 QIcon.fromTheme('edit-redo',
-                        QIcon(':/images/editredo.png')),
+                        QIcon(':/images/edit-redo.png')),
                 self.tr("&Redo"), self, priority=QAction.LowPriority,
                 shortcut=QKeySequence.Redo)
         tb.addAction(self.actionRedo)
+        tb.addSeparator()
         menu.addAction(self.actionRedo)
         menu.addSeparator()
 
         self.actionCut = QAction(
                 QIcon.fromTheme('edit-cut',
-                        QIcon(':/images/editcut.png')),
+                        QIcon(':/images/edit-cut.png')),
                 self.tr("Cu&t"), self, priority=QAction.LowPriority,
                 shortcut=QKeySequence.Cut)
         tb.addAction(self.actionCut)
@@ -162,7 +168,7 @@ class Editor(QMainWindow):
 
         self.actionCopy = QAction(
                 QIcon.fromTheme('edit-copy',
-                        QIcon(':/images/editcopy.png')),
+                        QIcon(':/images/edit-copy.png')),
                 self.tr("&Copy"), self, priority=QAction.LowPriority,
                 shortcut=QKeySequence.Copy)
         tb.addAction(self.actionCopy)
@@ -170,7 +176,7 @@ class Editor(QMainWindow):
 
         self.actionPaste = QAction(
                 QIcon.fromTheme('edit-paste',
-                        QIcon(':/images/editpaste.png')),
+                        QIcon(':/images/edit-paste.png')),
                 self.tr("&Paste"), self, priority=QAction.LowPriority,
                 shortcut=QKeySequence.Paste,
                 enabled=(len(QApplication.clipboard().text()) != 0))
@@ -182,13 +188,14 @@ class Editor(QMainWindow):
         tb.setWindowTitle(self.tr("Format Actions"))
         self.addToolBarBreak(Qt.TopToolBarArea)
         self.addToolBar(tb)
+        tb.setIconSize(QSize(48, 48))
 
         menu = QMenu(self.tr("F&ormat"), self)
         self.menuBar().addMenu(menu)
 
         self.actionTextBold = QAction(
                 QIcon.fromTheme('format-text-bold',
-                        QIcon(':/images/textbold.png')),
+                        QIcon(':/images/format-text-bold.png')),
                 self.tr("&Bold"), self, priority=QAction.LowPriority,
                 shortcut=Qt.CTRL + Qt.Key_B,
                 triggered=self.textBold, checkable=True)
@@ -200,7 +207,7 @@ class Editor(QMainWindow):
 
         self.actionTextItalic = QAction(
                 QIcon.fromTheme('format-text-italic',
-                        QIcon(':/images/textitalic.png')),
+                        QIcon(':/images/format-text-italic.png')),
                 self.tr("&Italic"), self, priority=QAction.LowPriority,
                 shortcut=Qt.CTRL + Qt.Key_I,
                 triggered=self.textItalic, checkable=True)
@@ -212,7 +219,7 @@ class Editor(QMainWindow):
 
         self.actionTextUnderline = QAction(
                 QIcon.fromTheme('format-text-underline',
-                        QIcon(':/images/textunder.png')),
+                        QIcon(':/images/format-text-underline.png')),
                 self.tr("&Underline"), self, priority=QAction.LowPriority,
                 shortcut=Qt.CTRL + Qt.Key_U,
                 triggered=self.textUnderline, checkable=True)
@@ -223,24 +230,25 @@ class Editor(QMainWindow):
         menu.addAction(self.actionTextUnderline)
 
         menu.addSeparator()
+        tb.addSeparator()
 
         grp = QActionGroup(self, triggered=self.textAlign)
 
         self.actionAlignLeft = QAction(
                 QIcon.fromTheme('format-justify-left',
-                        QIcon(':/images/textleft.png')),
+                        QIcon(':/images/format-justify-left.png')),
                 self.tr("&Left"), grp)
         self.actionAlignCenter = QAction(
                 QIcon.fromTheme('format-justify-center',
-                        QIcon(':/images/textcenter.png')),
+                        QIcon(':/images/format-justify-center.png')),
                 self.tr("C&enter"), grp)
         self.actionAlignRight = QAction(
                 QIcon.fromTheme('format-justify-right',
-                        QIcon(':/images/textright.png')),
+                        QIcon(':/images/format-justify-right.png')),
                 self.tr("&Right"), grp)
         self.actionAlignJustify = QAction(
                 QIcon.fromTheme('format-justify-fill',
-                        QIcon(':/images/textjustify.png')),
+                        QIcon(':/images/format-justify-fill.png')),
                 self.tr("&Justify"), grp)
 
         self.actionAlignLeft.setShortcut(Qt.CTRL + Qt.Key_L)
@@ -260,10 +268,11 @@ class Editor(QMainWindow):
         self.actionAlignJustify.setPriority(QAction.LowPriority)
 
         tb.addActions(grp.actions())
+        tb.addSeparator()
         menu.addActions(grp.actions())
         menu.addSeparator()
 
-        pix = QPixmap(16, 16)
+        pix = QPixmap(32, 32)
         pix.fill(Qt.black)
         self.actionTextColor = QAction(QIcon(pix), self.tr("&Color..."),
                 self, triggered=self.textColor)
@@ -274,6 +283,7 @@ class Editor(QMainWindow):
         tb.setAllowedAreas(
                 Qt.TopToolBarArea | Qt.BottomToolBarArea)
         tb.setWindowTitle(self.tr("Font & Paragraph Actions"))
+        self.addToolBarBreak(Qt.TopToolBarArea)
         self.addToolBar(tb)
 
         comboStyle = QComboBox(tb)
@@ -314,9 +324,6 @@ class Editor(QMainWindow):
         helpMenu.addAction(self.tr("About &Qt"), qApp.aboutQt)
     
     def setupI18nActions(self):
-        tb = QToolBar(self)
-        tb.setWindowTitle(self.tr("Language Actions"))
-        self.addToolBar(tb)
         
         menu = QMenu(self.tr("&Language"), self)
         self.menuBar().addMenu(menu)
@@ -325,18 +332,17 @@ class Editor(QMainWindow):
         
         self.actionEnglish = QAction(
                 QIcon.fromTheme('flag-us',
-                        QIcon(':/images/textleft.png')),
+                        QIcon(':/images/flag-us.png')),
                 self.tr("&English"), grp)
         self.actionChinese = QAction(
                 QIcon.fromTheme('flag-cn',
-                        QIcon(':/images/textcenter.png')),
+                        QIcon(':/images/flag-cn.png')),
                 self.tr("&Chinese"), grp)
         self.actionEnglish.setCheckable(True)
         self.actionEnglish.setPriority(QAction.LowPriority)
         self.actionChinese.setCheckable(True)
         self.actionChinese.setPriority(QAction.LowPriority)
         
-        tb.addActions(grp.actions())
         menu.addActions(grp.actions())
         
     
@@ -573,7 +579,7 @@ class Editor(QMainWindow):
         self.actionTextUnderline.setChecked(font.underline())
 
     def colorChanged(self, color):
-        pix = QPixmap(16, 16)
+        pix = QPixmap(32, 32)
         pix.fill(color)
         self.actionTextColor.setIcon(QIcon(pix))
 
