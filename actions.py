@@ -239,7 +239,7 @@ class Actions(QObject):
         styleDict.get(styleIndex, self.normalText)()
 
     def textColor(self):
-        col = QColorDialog.getColor(self.textEdit.textColor(), self)
+        col = QColorDialog.getColor(self.textEdit.textColor(), self.main)
         if not col.isValid():
             return
 
