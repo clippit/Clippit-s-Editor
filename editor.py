@@ -158,7 +158,18 @@ class Editor(QMainWindow):
                 shortcut=QKeySequence.Paste, triggered=self.textEdit.paste, 
                 enabled=(len(QApplication.clipboard().text()) != 0))
         tb.addAction(self.actionPaste)
+        tb.addSeparator()
         menu.addAction(self.actionPaste)
+        menu.addSeparator()
+        
+        self.actionInsertImage = QAction(
+                QIcon.fromTheme('insert-image',
+                        QIcon(':/images/insert-image.png')),
+                self.tr("&Insert Image"), self, priority=QAction.LowPriority,
+                shortcut=Qt.CTRL + Qt.Key_I,
+                triggered=self.commands.insertImage)
+        tb.addAction(self.actionInsertImage)
+        menu.addAction(self.actionInsertImage)
 
     def setupFormatActions(self):
         tb = QToolBar(self)

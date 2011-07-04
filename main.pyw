@@ -29,7 +29,7 @@ if __name__ == '__main__':
     mainWindows = []
     for fn in sys.argv[1:] or [None]:
         editor = editor.Editor(fn)
-        editor.resize(800, 600)
+        editor.resize(960, 600)
         editor.show()
         mainWindows.append(editor)
 

@@ -155,6 +155,15 @@ class Actions(QObject):
             printer.setOutputFileName(fileName)
             self.textEdit.document().print_(printer)
 
+    def insertImage(self):
+        fn = QFileDialog.getOpenFileName(self.main, self.tr("Insert An Image"), None, 
+                self.tr("Images (*.jpg *.png);;All Files (*)"))
+        
+        if fn:
+            image = QImage(fn)
+            self.textEdit.textCursor().insertImage(image)
+                
+
     def textBold(self):
         fmt = QTextCharFormat()
         fmt.setFontWeight(self.main.actionTextBold.isChecked() and QFont.Bold or QFont.Normal)
