@@ -19,6 +19,8 @@ class Actions(QObject):
                 self.main.actionSave.setEnabled)
         self.textEdit.document().modificationChanged.connect(
                 self.main.setWindowModified)
+        self.textEdit.document().contentsChanged.connect(
+                self.main.navWidget.updatePreview)
         self.textEdit.document().undoAvailable.connect(
                 self.main.actionUndo.setEnabled)
         self.textEdit.document().redoAvailable.connect(
@@ -291,5 +293,6 @@ class Actions(QObject):
             i18n.setValue("lang", "zh_CN")
         QMessageBox.information(self, self.tr("Language Changed"), 
                                 self.tr("Your language will be changed when you run the application next time."))
-                
-
+    
+    def printPreview(self, printer):
+        self.textEdit.print_(printer)

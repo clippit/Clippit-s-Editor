@@ -327,7 +327,11 @@ class Editor(QMainWindow):
         navDockWidget.setObjectName("LogDockWidget")
         navDockWidget.setAllowedAreas(Qt.LeftDockWidgetArea|
                                       Qt.RightDockWidgetArea)
-        self.navListWidget = QListWidget()
-        navDockWidget.setWidget(self.navListWidget)
+        
+        self.printer = QPrinter(QPrinter.ScreenResolution)
+        self.navWidget = QPrintPreviewWidget(self.printer)
+        self.navWidget.paintRequested.connect(self.commands.printPreview)
+        
+        navDockWidget.setWidget(self.navWidget)
         self.addDockWidget(Qt.RightDockWidgetArea, navDockWidget)
     
